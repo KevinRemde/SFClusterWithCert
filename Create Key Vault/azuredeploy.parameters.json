@@ -1,0 +1,24 @@
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "keyVaultName": {
+                "value": "testVault"
+            },
+            "tenantId": {
+                "value": "example-guid"
+            },
+            "secrets": {
+                "value": [
+                    {
+                        "secretName": "secret1",
+                        "secretValue": "ITProsRock"
+                    },
+                    {
+                        "secretName": "secret2",
+                        "secretValue": "ITProsRock"
+                    }
+                ]
+            }
+        }
+    }

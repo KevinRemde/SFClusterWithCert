@@ -1,0 +1,60 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterLocation": {
+      "value": "eastus2"
+    },
+    "clusterName": {
+      "value": "kartestcluster"
+    },
+    "adminUserName": {
+      "value": "adminuser"
+    },
+    "vmImagePublisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "vmImageOffer": {
+      "value": "WindowsServer"
+    },
+    "vmImageSku": {
+      "value": "2016-Datacenter"
+    },
+    "vmImageVersion": {
+      "value": "latest"
+    },
+    "loadBalancedAppPort1": {
+      "value": 80
+    },
+    "loadBalancedAppPort2": {
+      "value": 8081
+    },
+    "certificateStorevalue": {
+      "value": "My"
+    },
+    "certificateThumbprint": {
+      "value": "267BF35DD52189126DEAD1CD6C566AA7619B5301"
+    },
+    "sourceVaultvalue": {
+      "value": "/subscriptions/06a00fe9-8465-47c5-8731-6bd05240044b/resourceGroups/RG-vault/providers/Microsoft.KeyVault/vaults/karVault"
+    },
+    "certificateUrlvalue": {
+      "value": "https://karvault.vault.azure.net/secrets/mySecret/84bd457c47e44d81af7d681753f9c533"
+    },
+    "clusterProtectionLevel": {
+      "value": "EncryptAndSign"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "supportLogStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "applicationDiagnosticsStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "nt0InstanceCount": {
+      "value": 5
+    }
+  }
+}
