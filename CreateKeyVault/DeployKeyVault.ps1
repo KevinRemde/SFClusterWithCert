@@ -28,15 +28,14 @@ $loc = Read-Host -Prompt "and then press ENTER."
 #>
 
 # Variables 
-
-$rgName = "RG-KeyVault" + $init
+$keyvaultName = "myKeyVault"
+$rgName = "RG-"+ $keyvaultName + $init
 # $deploymentName = $init + "AZLab"  # Not required
 
 # Use these if you want to drive the deployment from local template and parameter files..
 #
-$localAssets = "C:\Code\keyvaultcreate\"
-$templateFileLoc = $localAssets + "azuredeploy.json"
-$parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
+# $localAssets = "C:\Code\keyvaultcreate\"
+# $templateFileLoc = $localAssets + "azuredeploy.json"
 # $parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
 
 # Use these if you want to drive the deployment from Github-based template. 
@@ -44,9 +43,8 @@ $parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
 # $assetLocation = "https://rawgit.com/KevinRemde/20161115/master/" 
 # If the rawgit.com path is not available, you can try un-commenting the following line instead...
 # 
-# $assetLocation = "https://cgiresources.blob.core.windows.net/files/"
-# $assetLocation = "https://raw.githubusercontent.com/KevinRemde/CTest/master/"
-# $templateFileURI  = $assetLocation + "azuredeploy.json"
+$assetLocation = "https://raw.githubusercontent.com/KevinRemde/SFClusterWithCert/master/Create Key Vault/"
+$templateFileURI  = $assetLocation + "azuredeploy.json"
 # $parameterFileURI = $assetLocation + "azuredeploy.parameters.json" # Use only if you want to use Kevin's defaults (not recommended)
 
 
@@ -62,20 +60,10 @@ $loc = "East US 2"
 
 # Populate the parameter object with parameter values for the azuredeploy.json template to use.
 $parameterObject = @{
-    "keyVaultName" = "mykeyvault"
+    "keyVaultName" = $keyvaultName
     "tenantId" = "$tenantID"
 }
 
-
-"certificateThumbprint": {
-      "value": "267BF35DD52189126DEAD1CD6C566AA7619B5301"
-    },
-    "sourceVaultvalue": {
-      "value": "/subscriptions/06a00fe9-8465-47c5-8731-6bd05240044b/resourceGroups/RG-vault/providers/Microsoft.KeyVault/vaults/karVault"
-    },
-    "certificateUrlvalue": {
-      "value": "https://karvault.vault.azure.net/secrets/mySecret/84bd457c47e44d81af7d681753f9c533"
-    },
 
 # Create the resource group
 
@@ -94,7 +82,7 @@ Write-Host ""
 
 Measure-Command -expression { `
     New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName `
-    -TemplateFile $templateFileLoc `
+    -TemplateUri $templateFileURI `
     -TemplateParameterObject $parameterObject `
     -Verbose}
 
