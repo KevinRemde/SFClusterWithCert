@@ -43,7 +43,7 @@ $rgName = "RG-"+ $keyvaultName + $init
 # $assetLocation = "https://rawgit.com/KevinRemde/20161115/master/" 
 # If the rawgit.com path is not available, you can try un-commenting the following line instead...
 # 
-$assetLocation = "https://raw.githubusercontent.com/KevinRemde/SFClusterWithCert/master/Create Key Vault/"
+$assetLocation = "https://raw.githubusercontent.com/KevinRemde/SFClusterWithCert/master/CreateKeyVault/"
 $templateFileURI  = $assetLocation + "azuredeploy.json"
 # $parameterFileURI = $assetLocation + "azuredeploy.parameters.json" # Use only if you want to use Kevin's defaults (not recommended)
 

@@ -48,7 +48,7 @@
         },
         "secrets": {
             "type": "array",
-            "defaultValue": "{}",
+            "defaultValue": "",
             "metadata": {
                 "description": "all secrets {\"secretName\":\"\",\"secretValue\":\"\"}"
             }
