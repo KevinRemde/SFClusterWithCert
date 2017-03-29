@@ -178,6 +178,9 @@ Measure-Command -expression { `
 # use only if you want to use Kevin's default parameters (not recommended)
 # New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName -TemplateUri $templateFileURI -TemplateParameterUri $parameterFileURI
 
+#Beep
+$([char]7)
+
 Write-Host ""
 Write-Host "Completed at" (Get-Date -format T)
 
