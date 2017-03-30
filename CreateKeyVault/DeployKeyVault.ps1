@@ -28,14 +28,14 @@ $loc = Read-Host -Prompt "and then press ENTER."
 #>
 
 # Variables 
-$keyvaultName = "myKeyVault"
-$rgName = "RG-"+ $keyvaultName + $init
+$keyvaultName = "myKeyVault" + $init
+$rgName = "RG-"+ $keyvaultName
 # $deploymentName = $init + "AZLab"  # Not required
 
 # Use these if you want to drive the deployment from local template and parameter files..
 #
-# $localAssets = "C:\Code\keyvaultcreate\"
-# $templateFileLoc = $localAssets + "azuredeploy.json"
+$localAssets = "C:\Code\MyGitHub\SFClusterWithCert\CreateKeyVault\"
+$templateFileLoc = $localAssets + "azuredeploy.json"
 # $parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
 
 # Use these if you want to drive the deployment from Github-based template. 
@@ -82,12 +82,17 @@ Write-Host ""
 
 Measure-Command -expression { `
     New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName `
-    -TemplateUri $templateFileURI `
+    -TemplateFile $templateFileLoc `
     -TemplateParameterObject $parameterObject `
     -Verbose}
 
-# use only if you want to use Kevin's default parameters (not recommended)
-# New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName -TemplateUri $templateFileURI -TemplateParameterUri $parameterFileURI
+<#
+Measure-Command -expression { `
+    New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName `
+    -TemplateUri $templateFileURI `
+    -TemplateParameterObject $parameterObject `
+    -Verbose}
+#>
 
 Write-Host ""
 Write-Host "Completed at" (Get-Date -format T)

@@ -34,9 +34,9 @@ $rgName = "RG-SFCluster" + $init
 
 # Use these if you want to drive the deployment from local template and parameter files..
 #
-$localAssets = "C:\Code\MyGitHub\SFClusterWithCert\Create SF Cluster\"
-$templateFileLoc = $localAssets + "azuredeploy.json"
-$parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
+# $localAssets = "C:\Code\MyGitHub\SFClusterWithCert\Create SF Cluster\"
+# $templateFileLoc = $localAssets + "azuredeploy.json"
+# $parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
 # $parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
 
 # Use these if you want to drive the deployment from Github-based template. 
@@ -45,8 +45,8 @@ $parameterFileLoc = $localAssets + "azuredeploy.parameters.json"
 # If the rawgit.com path is not available, you can try un-commenting the following line instead...
 # 
 # $assetLocation = "https://cgiresources.blob.core.windows.net/files/"
-# $assetLocation = "https://raw.githubusercontent.com/KevinRemde/CTest/master/"
-# $templateFileURI  = $assetLocation + "azuredeploy.json"
+$assetLocation = "https://raw.githubusercontent.com/KevinRemde/SFClusterWithCert/master/CreateSFCluster/"
+$templateFileURI  = $assetLocation + "azuredeploy.json"
 # $parameterFileURI = $assetLocation + "azuredeploy.parameters.json" # Use only if you want to use Kevin's defaults (not recommended)
 
 
@@ -171,7 +171,7 @@ Write-Host ""
 
 Measure-Command -expression { `
     New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName `
-    -TemplateFile $templateFileLoc `
+    -TemplateUri $templateFileURI `
     -TemplateParameterObject $parameterObject `
     -Verbose}
 

@@ -14,6 +14,13 @@
                 "description": "Tenant Id for the subscription and use assigned access to the vault. Available from the Get-AzureRMSubscription PowerShell cmdlet"
             }
         },
+        "accessPolicies": {
+            "type": "array",
+            "defaultValue": "{}",
+            "metadata": {
+                "description": "Access policies object {\"tenantId\":\"\",\"objectId\":\"\",\"permissions\":{\"keys\":[\"\"],\"secrets\":[\"\"]}}"
+            }
+        },
         "vaultSku": {
             "type": "string",
             "defaultValue": "Standard",
@@ -48,7 +55,16 @@
         },
         "secrets": {
             "type": "array",
-            "defaultValue": "{}",
+            "defaultValue": [
+                    {
+                        "secretName": "secret1",
+                        "secretValue": "ITProsRock"
+                    },
+                    {
+                        "secretName": "secret2",
+                        "secretValue": "ITProsRock"
+                    }
+                ],
             "metadata": {
                 "description": "all secrets {\"secretName\":\"\",\"secretValue\":\"\"}"
             }
@@ -68,6 +84,7 @@
                 "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
                 "enabledForVolumeEncryption": "[parameters('enableVaultForVolumeEncryption')]",
                 "tenantId": "[parameters('tenantId')]",
+                "accessPolicies": "[parameters('accessPolicies')]",
                 "sku": {
                     "name": "[parameters('vaultSku')]",
                     "family": "A"
